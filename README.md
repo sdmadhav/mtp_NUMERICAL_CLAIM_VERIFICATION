@@ -1045,6 +1045,13 @@ Most often I came across these commands only.
 > history - list the previous commands in the terminal
 
 ### ROBERTA MODEL TRAINING AND TESTING
+Base model: https://www.kaggle.com/code/madhavdeshatwad/train-nli-model & https://github.com/sdmadhav/train_nli_model/tree/main
+Roberta Large FinQA - train_finqa_roberta.py
+
 ### 3 ENCODER STRATEGY TRAINING AND RESTING
 
 ## DATASETS
+
+## References:
+[Understanding Numerical Context by Asking Quantitative Questions
+](https://doi.org/10.1007/978-3-031-88720-8_35)
