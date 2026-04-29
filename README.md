@@ -8,13 +8,14 @@ Quantemp Trained models: https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs
 
 Quantemp Dataset: https://github.com/factiverse/QuanTemp/tree/main/data/raw_data
 
+[FIRST SEM WORK](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP?usp=sharing). This file is already available in [this]() repository but due to size limit github is not able to render.
+
 ## STANDARD PIPELINE
 <img width="1660" height="186" alt="image" src="https://github.com/user-attachments/assets/7d3ac29d-24d9-448b-8642-2c2de3b42575" />
 
 ## CLAIM DECOMPOSITION
 It is a method where we decompose a complex claim into sub-questions. Quantmep has decomposed claims into YES-NO type questions. Entity mentioned in question so when we do retrieval as the retrieval is keywords matching based retrieval it will retrieve the evidences which have keyword match from question. This does not bring contrastive evidences. Example: "Did 11.3% work in informal economy?" → snippets with "11.3%" regardless of context
 
-[FIRST SEM WORK](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP?usp=sharing)
 
 ### WH-QUESTION GENERATION
 We proposed the strategy of decomposing claims into Wh-Questions. 
