@@ -91,7 +91,7 @@ INPUT CLAIM
 
 ### Why decompose claims?
 
-A long numerical claim often embeds multiple sub-facts. Querying the entire claim directly retrieves documents that simply contain the numbers — not necessarily documents that *verify* or *contradict* the claim. Decomposition allows targeted retrieval for each sub-fact.
+A long numerical claim often embeds multiple sub-facts. Querying the entire claim directly retrieves documents that simply match the keywords in the query — not necessarily documents that *verify* or *contradict* the claim. Decomposition allows targeted retrieval for each sub-fact.
 
 **Problem with QuanTemp's YES/NO decomposition:**  
 QuanTemp decomposes claims into binary yes/no questions (e.g., *"Did 11.3% work in informal economy?"*). Since entity names are preserved, retrieval systems return snippets that keyword-match the number regardless of context. This produces *confirmatory* evidence, not *contrastive* evidence needed for verification.
