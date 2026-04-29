@@ -102,9 +102,9 @@ QuanTemp decomposes claims into binary yes/no questions (e.g., *"Did 11.3% work 
 
 **Goal:** Decompose a claim into open-ended WH-questions (who, what, when, where, how many) that are diverse and cover different aspects of the claim.
 
-**Model:** Fine-tuned `T5-base` on 22,000 claim–question pairs.
+**Model Weights:** [Download Here](https://drive.google.com/file/d/1q3G-t8DEoDyEYbU05YNMmH3w9zpajun_/view?usp=sharing)
 
-**Notebook:** [`1. heideltime_temporal_entity_extraction.ipynb`](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/1.%20heideltime_temporal_entity_extraction.ipynb)
+**Notebook:** [`0. Basic_Wh_Q_generation+MMR_Reranking+Evidence_Retrieval+Reranking_Evidences.ipynb`](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP)
 
 **How to run:**
 
