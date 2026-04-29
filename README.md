@@ -564,7 +564,7 @@ sbatch run_fin_o1.slurm
 - **Google Custom Search API:** [Programmable Search Engine](https://programmablesearchengine.google.com/controlpanel/all)
 - **TheFinAI/Fino1-8B:** [HuggingFace](https://huggingface.co/TheFinAI/Fino1-8B)
 - **First Semester Colab Work:** [Colab Notebook](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP?usp=sharing)
-- **Published Paper:** [Understanding Numerical Context by Asking Quantitative Questions](https://doi.org/10.1007/978-3-031-88720-8_35)
+- **Question Generation Model Paper:** [Understanding Numerical Context by Asking Quantitative Questions](https://doi.org/10.1007/978-3-031-88720-8_35)
 
 ---
 
