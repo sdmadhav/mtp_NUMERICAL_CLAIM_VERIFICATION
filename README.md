@@ -3,7 +3,9 @@
 ## INTRODUCTION
 We started with literature review and this are the helpful links. 
 Quantemp Repository: https://github.com/factiverse/QuanTemp
+
 Quantemp Trained models: https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs8H0B4vYliw_qjL7P-
+
 Quantemp Dataset: https://github.com/factiverse/QuanTemp/tree/main/data/raw_data
 
 ## STANDARD PIPELINE
