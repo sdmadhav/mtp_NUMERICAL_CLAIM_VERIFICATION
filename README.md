@@ -430,9 +430,11 @@ Direct calls to Hugging Face (e.g., from_pretrained("repo_id")) fail during jobs
 
 Therefore, the model must be:
 
-1. Downloaded beforehand
-2. Stored on a shared filesystem
-3. Loaded in offline mode
+> Downloaded beforehand
+>
+> Stored on a shared filesystem
+>
+> Loaded in offline mode
 
 1. Create Conda Environment
 ```bash
