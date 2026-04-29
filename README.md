@@ -304,7 +304,7 @@ top_snippet = snippets[top_idx]
 **Full pipeline** (implemented in `2.1 Page Content Retrieval Strategy.ipynb`):
 
 1. **Load data** — claims with questions, snippets, and source links
-2. **Match questions to QuanTemp questions** — SBERT cosine similarity, to access pre-extracted target entities
+2. **Match questions to QuanTemp questions** — SBERT cosine similarity, Quantemp questions have entities but not ours so missing entities from our questions but present in quantemp most similar question can be our target entity.
 3. **Extract target entities** — using [GLiNER](https://github.com/urchade/GLiNER) on matched QuanTemp questions
 4. **Fetch article content** — HTTP request to source URL; fall back to snippets if page is inaccessible
 5. **Build per-article FAISS vector DB** — chunk page content, embed with SBERT, index with FAISS
