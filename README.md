@@ -337,7 +337,7 @@ top_snippet = snippets[top_idx]
 Given a claim and retrieved evidence, classify the claim as:
 - **Supported** — evidence confirms the claim
 - **Refuted** — evidence contradicts the claim
-- **Not Enough Information (NEI)** — insufficient evidence to decide
+- **Conflicting** — some evidences supports and some contradicts the claim
 
 ---
 
