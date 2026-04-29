@@ -133,9 +133,10 @@ After query refinement: "Who employed 161,000 people in Cape Town? 2015"
 ```
 
 
-## EVIDENCE RETRIEVAL WITH APIS
+## EVIDENCE RETRIEVAL 
 Now we have refined queries we are good to go for evidence retrieval. The api we used to evidence retrieval is Google Custom Search. The Google Custom Search JSON API allows you to programmatically retrieve search results from specific websites or the entire web using RESTful requests. You can configure the engine to search only your own website, a specific list of domains, or the entire web.  Results are returned in JSON format, following the OpenSearch 1.1 specification. You can filter results by language, country, date range, or file type (e.g., PDF). Setup Requirements to use the API, you must obtain two identifiers from the Google Cloud Console, API Key  & Search Engine ID (cx) - Created in the [Programmable Search Engine Control Panel](https://programmablesearchengine.google.com/controlpanel/all). Free Tier allows only 100 requests per day so created multiple apis or if you can afford go for paid version which allows 10,000 requests per day. We have 15478 claims and 3 queries per claim so around 46000 queries. This can be a bottleneck so with paid version also it will take atleast 5 days.
 
+### From Google Custom Search APIS
 ```python
 import requests
 import json
