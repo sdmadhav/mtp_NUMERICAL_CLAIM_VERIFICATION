@@ -82,7 +82,7 @@ INPUT CLAIM
 └────────────┬────────────────┘
              │
              ▼
-     SUPPORTED / REFUTED / NEI
+     TRUE / FALSE / CONFLICTING
 ```
 
 ---
