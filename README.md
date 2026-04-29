@@ -1,7 +1,7 @@
 # mtp_NUMERICAL_CLAIM_VERIFICATION
 
 ## INTRODUCTION
-We started with literature review and this are the helpful links. 
+We started with literature review and these are the helpful links. 
 Quantemp Repository: https://github.com/factiverse/QuanTemp
 
 Quantemp Trained models: https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs8H0B4vYliw_qjL7P-
@@ -14,6 +14,7 @@ Quantemp Dataset: https://github.com/factiverse/QuanTemp/tree/main/data/raw_data
 ## CLAIM DECOMPOSITION
 It is a method where we decompose a complex claim into sub-questions. Quantmep has decomposed claims into YES-NO type questions. Entity mentioned in question so when we do retrieval as the retrieval is keywords matching based retrieval it will retrieve the evidences which have keyword match from question. This does not bring contrastive evidences. Example: "Did 11.3% work in informal economy?" → snippets with "11.3%" regardless of context
 
+[FIRST SEM WORK](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP?usp=sharing)
 
 ### WH-QUESTION GENERATION
 We proposed the strategy of decomposing claims into Wh-Questions. 
