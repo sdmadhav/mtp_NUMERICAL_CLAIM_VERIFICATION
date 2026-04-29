@@ -102,7 +102,7 @@ QuanTemp decomposes claims into binary yes/no questions (e.g., *"Did 11.3% work 
 
 **Goal:** Decompose a claim into open-ended WH-questions (who, what, when, where, how many) that are diverse and cover different aspects of the claim.
 
-**Model Weights:** [Download Here](https://drive.google.com/file/d/1q3G-t8DEoDyEYbU05YNMmH3w9zpajun_/view?usp=sharing)
+**Question Generation Model Weights:** [Download Here](https://drive.google.com/file/d/1q3G-t8DEoDyEYbU05YNMmH3w9zpajun_/view?usp=sharing)
 
 **Notebook:** [`0. Basic_Wh_Q_generation+MMR_Reranking+Evidence_Retrieval+Reranking_Evidences.ipynb`](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP)
 
@@ -141,7 +141,7 @@ def run_model(input_string):
 | `length_penalty` | 1.5 | Encourage longer, more specific questions |
 | `no_repeat_ngram_size` | 3 | Avoid repetitive phrasing |
 
-**Pretrained weights:** Available via [Google Drive (QuanTemp models)](https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs8H0B4vYliw_qjL7P-)
+
 
 ---
 
@@ -152,6 +152,7 @@ def run_model(input_string):
 **Why MMR?** If we just pick the top-3 by relevance score, we often get 3 nearly identical questions. Maximal Marginal Relevance (MMR) balances relevance and diversity — it greedily selects questions that are highly relevant to the claim but dissimilar to already-selected questions.
 
 **Library:** [`pyversity`](https://github.com/Pringled/pyversity)
+**Notebook:** [`0. Basic_Wh_Q_generation+MMR_Reranking+Evidence_Retrieval+Reranking_Evidences.ipynb`](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP)
 
 **Diversity parameter:** `0.5` — equal weight between relevance and diversity (range: 0 = pure relevance, 1 = pure diversity).
 
@@ -204,6 +205,7 @@ selected_indices = result.indices
 Without the year, retrieval may return documents from different years, producing misleading evidence.
 
 **Tool:** [`py-heideltime`](https://github.com/HeidelTime/heideltime) — a Python wrapper for the HeidelTime temporal tagger.
+**Notebook:** [`1. heideltime_temporal_entity_extraction.ipynb`](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/1.%20heideltime_temporal_entity_extraction.ipynb)
 
 ```bash
 pip install py-heideltime
@@ -246,6 +248,8 @@ result = heideltime("...employed by the informal economy in 2015.")
 - **API key rotation:** Multiple keys rotate automatically when quota is exceeded (429 error)
 - **Resumable processing:** Saves progress after each claim; can safely restart from checkpoint
 
+**Notebook:** [`0. Basic_Wh_Q_generation+MMR_Reranking+Evidence_Retrieval+Reranking_Evidences.ipynb`](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP)
+
 ```python
 class SimpleGoogleRetriever:
     def __init__(self, api_keys: List[str], search_engine_id: str):
@@ -280,6 +284,8 @@ class SimpleGoogleRetriever:
 **Goal:** From 10 retrieved snippets per query, select the single most relevant snippet to the claim.
 
 **Method:** Cosine similarity between the claim embedding and each snippet embedding using `all-MiniLM-L6-v2`.
+
+**Notebook:** [`0. Basic_Wh_Q_generation+MMR_Reranking+Evidence_Retrieval+Reranking_Evidences.ipynb`](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP)
 
 ```python
 from sentence_transformers import SentenceTransformer, util
@@ -343,10 +349,11 @@ Given a claim and retrieved evidence, classify the claim as:
 
 ### RoBERTa Model
 
-**Base model:** `roberta-large`, fine-tuned on FinQA numerical reasoning data.
+**Base model:** `finqa-roberta-large`, fine-tuned on FinQA numerical reasoning data.
+**Baseline Model Pretrained weights:** Available via [Google Drive (QuanTemp FinQA-Roberta-Large-mnli models)](https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs8H0B4vYliw_qjL7P-)
 
 **Notebooks/Scripts:**
-- Base training: [Kaggle notebook](https://www.kaggle.com/code/madhavdeshatwad/train-nli-model)
+- Roberta Base training: [Kaggle notebook](https://www.kaggle.com/code/madhavdeshatwad/train-nli-model)
 - Repository: [train_nli_model](https://github.com/sdmadhav/train_nli_model/tree/main)
 - FinQA fine-tuning: [`train_finqa_roberta.py`](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/train_finqa_roberta.py)
 
