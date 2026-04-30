@@ -522,7 +522,8 @@ Follow these steps in order:
 
 **Step 1 — Question Generation & Temporal Refinement**
 ```bash
-# Open and run notebook:
+# Open and run notebooks:
+jupyter notebook "0. Basic_Wh_Q_generation+MMR_Reranking+Evidence_Retrieval+Reranking_Evidences.ipynb" #to get the questions
 jupyter notebook "1. heideltime_temporal_entity_extraction.ipynb"
 ```
 - Download the T5 model weights from [Google Drive](https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs8H0B4vYliw_qjL7P-)
@@ -537,20 +538,24 @@ jupyter notebook "1. heideltime_temporal_entity_extraction.ipynb"
 
 **Step 3 — Page Content Retrieval**
 ```bash
-jupyter notebook claim_verification_analysis_updated_v2.ipynb
+jupyter notebook "2.1 Page Content Retrieval Strategy.ipynb"
 ```
 - Input: `claims_with_evidence.json`
 - Output: Enriched JSON with full-page evidence chunks and entity signals
 
-**Step 4 — NLI Training (RoBERTa)**
+**Step 4 — NLI Training (FinQA_RoBERTa_Large)**
 ```bash
-python train_finqa_roberta.py
+git clone https://github.com/sdmadhav/train_nli_model.git
+cd train_nli_model
+python train_nli_finqa_roberta_large.py    #update this file to pass train, test, val files as arguments
 ```
 
 **Step 5 — NLI Training (FinO1-8B on HPC)**
 ```bash
-# On HPC login node:
-sbatch run_fin_o1.slurm
+# Do initial setup of downloading the model and uploading the dataset and training script to hpc and creation of slurm file
+# Change content of training script via nano 3.2 train_fin_o1_8b.py
+# On HPC login node submit the job:
+sbatch run_fin_o1.slurm 
 ```
 
 ---
