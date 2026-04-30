@@ -152,6 +152,7 @@ def run_model(input_string):
 **Why MMR?** If we just pick the top-3 by relevance score, we often get 3 nearly identical questions. Maximal Marginal Relevance (MMR) balances relevance and diversity — it greedily selects questions that are highly relevant to the claim but dissimilar to already-selected questions.
 
 **Library:** [`pyversity`](https://github.com/Pringled/pyversity)
+
 **Notebook:** [`0. Basic_Wh_Q_generation+MMR_Reranking+Evidence_Retrieval+Reranking_Evidences.ipynb`](https://colab.research.google.com/drive/1mf9hEgLoAWpY6mVYhW-7qo9M6wEu8STP)
 
 **Diversity parameter:** `0.5` — equal weight between relevance and diversity (range: 0 = pure relevance, 1 = pure diversity).
@@ -205,6 +206,7 @@ selected_indices = result.indices
 Without the year, retrieval may return documents from different years, producing misleading evidence.
 
 **Tool:** [`py-heideltime`](https://github.com/HeidelTime/heideltime) — a Python wrapper for the HeidelTime temporal tagger.
+
 **Notebook:** [`1. heideltime_temporal_entity_extraction.ipynb`](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/1.%20heideltime_temporal_entity_extraction.ipynb)
 
 ```bash
