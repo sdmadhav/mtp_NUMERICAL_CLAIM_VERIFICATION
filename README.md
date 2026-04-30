@@ -362,8 +362,21 @@ Initally also we played with the evidences. We trained models with top 1 or 2 sn
 
 Then as we were outperforming and giving the comparable results we moved on to the strong reasoning and finetuned models. 
 
-1. FinQA_Roberta_Large. This model is finetuned on financial dataset  [FinQA: A Dataset of Numerical Reasoning over Financial Data](https://huggingface.co/datasets/ibm-research/finqa). It has strong numerical understanding than the base model roberta-base.
-   [Notebook](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/3.1%20FinQA_Roberta_Large_On_OUR_DATASET.ipynb). This notebook has code to download the model weights automatically from google drive shared by quantemp. Later this code clones my [train_nli_model](https://github.com/sdmadhav/train_nli_model/tree/main) Repository which has all the codes of training and testing for both roberta-base and finqa_roberta_large_mnli models.
+**FinQA_Roberta_Large:** This model is finetuned on financial dataset  [FinQA: A Dataset of Numerical Reasoning over Financial Data](https://huggingface.co/datasets/ibm-research/finqa). It has strong numerical understanding than the base model roberta-base.
+   [Notebook](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/3.1%20FinQA_Roberta_Large_On_OUR_DATASET.ipynb). This notebook has code to download the model weights automatically from google drive shared by quantemp. Later this code clones my [train_nli_model](https://github.com/sdmadhav/train_nli_model/tree/main) Repository which has all the codes of training and testing for both roberta-base and finqa_roberta_large_mnli models. 
+   
+   You can find following training scripts in this repository.
+   1. train_nli_finqa_roberta_large.py -> FINQA Roberta Large training script. 
+   2. multi_model_train_Roberta_Base.py -> Roberta base training script with our, merged and quantemp dataset. 
+   3. our_model_with2ev.py -> Roberta base training script with just our dataset with top 2 ranked snippets as evidences.
+
+   You can find following json dataset files in this repository. Also maintain this order for your training dataset as well using these training scripts. 
+   1. our_test.json
+   2. our_train.json
+   3. our_val.json
+   4. test_claimdecomp_evidence_question_mapping.json - Quantemp test
+   5. train_claimdecomp_evidence_question_mapping.json - Quantemp train
+   6. val_claimdecomp_evidence_question_mapping.json - Quantemp val
     
 ---
 
@@ -479,34 +492,6 @@ QuanTemp is a dataset of numerical claims annotated with:
 | `comparison_claims.json` | Subset of comparison-type claims |
 | `claims_with_evidence.json` | Claims + retrieved Google snippets |
 | `claims_with_evidence2.json` | Extended evidence file |
-
----
-
-## 📁 Repository Structure
-
-```
-mtp_NUMERICAL_CLAIM_VERIFICATION/
-│
-├── 1. heideltime_temporal_entity_extraction.ipynb
-│   └── WH-question generation + temporal entity extraction using HeidelTime
-│
-├── claim_verification_analysis_updated_v2.ipynb
-│   └── Full page content retrieval + FAISS vector search + entity comparison pipeline
-│
-├── 3.2 train_fin_o1_8b.py
-│   └── Fine-tuning FinO1-8B on HPC for NLI verdict classification
-│
-├── train_finqa_roberta.py
-│   └── RoBERTa-Large fine-tuning on FinQA data
-│
-├── run_fin_o1.slurm
-│   └── Slurm job submission script for HPC
-│
-├── datasets/
-│   └── comparison_claims.json (and other intermediate data)
-│
-└── README.md
-```
 
 ---
 
