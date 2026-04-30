@@ -350,15 +350,21 @@ Given a claim and retrieved evidence, classify the claim as:
 ---
 
 ### RoBERTa Model
+As the quantemp suggested the best performing model on their dataset was [finqa-roberta-large-mnli](https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs8H0B4vYliw_qjL7P-). Using this link weights of that model can be downloaded and used for training the model. We first started with roberta-base model. Initally my focus was only on completing the whole pipeline so i used simple model which can be ran on any hardware with 4GB GPU or on CPU as well. 
 
-**Base model:** `finqa-roberta-large`, fine-tuned on FinQA numerical reasoning data.
-**Baseline Model Pretrained weights:** Available via [Google Drive (QuanTemp FinQA-Roberta-Large-mnli models)](https://drive.google.com/drive/folders/1FmaelDhJ7QwsRTs8H0B4vYliw_qjL7P-)
+Initally also we played with the evidences. We trained models with top 1 or 2 snippets as evidences, to compare with valid baseline we trained roberta-base model on quantemp dataset as well. Later we wanted to check how much complementary benefits the evidences provide when we combine our+quantemp both the evidences. 
+
 
 **Notebooks/Scripts:**
-- Roberta Base training: [Kaggle notebook](https://www.kaggle.com/code/madhavdeshatwad/train-nli-model)
-- Repository: [train_nli_model](https://github.com/sdmadhav/train_nli_model/tree/main)
-- FinQA fine-tuning: [`train_finqa_roberta.py`](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/train_finqa_roberta.py)
+**Multimodel_train_roberta_base** : 
+[Notebook](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/3.0%20multi_model_train_Roberta_Base_OUTPUT.ipynb)
+[Kaggle notebook](https://www.kaggle.com/code/madhavdeshatwad/train-nli-model?scriptVersionId=281298401)
 
+Then as we were outperforming and giving the comparable results we moved on to the strong reasoning and finetuned models. 
+
+1. FinQA_Roberta_Large. This model is finetuned on financial dataset  [FinQA: A Dataset of Numerical Reasoning over Financial Data](https://huggingface.co/datasets/ibm-research/finqa). It has strong numerical understanding than the base model roberta-base.
+   [Notebook](https://github.com/sdmadhav/mtp_NUMERICAL_CLAIM_VERIFICATION/blob/main/3.1%20FinQA_Roberta_Large_On_OUR_DATASET.ipynb). This notebook has code to download the model weights automatically from google drive shared by quantemp. Later this code clones my [train_nli_model](https://github.com/sdmadhav/train_nli_model/tree/main) Repository which has all the codes of training and testing for both roberta-base and finqa_roberta_large_mnli models.
+    
 ---
 
 ### Qwen / FinO1-8B on HPC
