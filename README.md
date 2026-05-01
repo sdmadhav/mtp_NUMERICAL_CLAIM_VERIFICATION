@@ -463,12 +463,8 @@ python train_fin_o1_8b.py
 
 ### 3-Encoder Strategy
 
-A custom architecture using three separate encoders for:
-1. The **claim** 
-2. The **question/query**
-3. The **evidence**
-
-The three representations are combined for final verdict classification. Details and training scripts are in the repository.
+Multi-Encoder with Attention Fusion — meaning separate encoders for claim, questions, and evidences, then fuse their representations.
+<img width="1837" height="579" alt="image" src="https://github.com/user-attachments/assets/9d20a31a-ff14-4f18-adb2-8d5717c8d073" />
 
 ---
 
