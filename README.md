@@ -47,7 +47,8 @@ This project builds a complete automated pipeline that:
 3. **Retrieves** web evidence using Google Custom Search, then fetches full page content for deeper analysis.
 4. **Classifies** the claim as *Supported*, *Refuted*, or *Conflicting* using trained NLI models. Conflicting claims are those claims which are partly true and partly false, mixture, missattribution, miscaptioned, etc.
 
-The baseline for this pipeline is the [QuanTemp dataset](https://github.com/factiverse/QuanTemp), a benchmark specifically designed for numerical claim verification.
+The baseline for this pipeline is the [QuantTemp (SIGIR '24) dataset](https://github.com/factiverse/QuanTemp), a benchmark specifically designed for numerical claim verification. Quantemp is the most recent work on composite numerical claim verification. They have released dataset + baseline using FinQA-RoBERTa-Large.
+
 
 ---
 
