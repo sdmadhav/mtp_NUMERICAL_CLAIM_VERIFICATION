@@ -470,7 +470,56 @@ python train_fin_o1_8b.py
 Multi-Encoder with Attention Fusion — meaning separate encoders for claim, questions, and evidences, then fuse their representations.
 <img width="1837" height="579" alt="image" src="https://github.com/user-attachments/assets/9d20a31a-ff14-4f18-adb2-8d5717c8d073" />
 
----
+1. Encoder: bert-base-uncased : [![Open In Colab](https://google.com)](https://colab.research.google.com/drive/1n3_Zr8fWyrctjb-42RXLqCN_Pf0lsDKr?usp=sharing)
+2. Encoder: Roberta-Large-mnli: This model has more reasoning capabilities than the earlier model. But the constraint is as we are using 3 encoders we need more computes. So I have used HPC for this. Use the same vitual environment of roberta-hpc created during qwen training. This is  `submit_job.sh` file for creating job to train 3 encoder strategy for finqa-roberta-large-mnli as encoder.
+```bash
+ #!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --job-name=fact_verif
+#SBATCH --partition=gpu            
+#SBATCH --gres=gpu:1               # request 1 GPU — use gpu:a100:1 if A100s available
+#SBATCH --mem=48G                  # CPU RAM (data loading, tokenization)
+#SBATCH --cpus-per-task=8
+#SBATCH --time=12:00:00            
+#SBATCH --output=logs/%x_%j.out
+#SBATCH --error=logs/%x_%j.err
+
+# ── Environment ──────────────────────────────────────────────────────────────
+module load anaconda3-2024 cuda-12.4
+source /home/apps/compilers/anaconda3/2024/etc/profile.d/conda.sh
+conda activate roberta-hpc
+
+WORKDIR=$HOME/fact_verif
+cd $WORKDIR
+
+# Critical memory optimisation flags
+export PYTORCH_ALLOC_CONF=expandable_segments:True
+export TOKENIZERS_PARALLELISM=false
+export TRANSFORMERS_OFFLINE=1
+export HF_DATASETS_OFFLINE=1
+export PYTORCH_ALLOC_CONF=expandable_segments:True
+export TOKENIZERS_PARALLELISM=false
+# ── Resolve paths ─────────────────────────────────────────────────────────────
+# Edit these to match where gdown put your files
+DATA_DIR=$WORKDIR                  # folder downloaded by gdown --folder
+WEIGHTS=$WORKDIR/finqa_roberta_claimdecomp_early_stop_2/model_weights.zip
+SCRIPT=$WORKDIR/train_nli_model/three_encoder_finqa_roberta_large_mnli.py
+
+echo "=========================================="
+echo "Job ID: $SLURM_JOB_ID"
+echo "Node:   $SLURMD_NODENAME"
+echo "GPU:    $(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader)"
+echo "=========================================="
+
+python $SCRIPT \
+    --data_dir   $DATA_DIR \
+    --weights    $WEIGHTS \
+    --output_dir $WORKDIR/outputs
+
+echo "Job finished: $(date)"
+```
+ This job mentions about training script `three_encoder_finqa_roberta_large_mnli.py`. You can find all the required files in this drive folder. Download and upload this folder as it is to hpc and run `sbatch submit_job.sh` command in the directory where this files are uploaded. 
 
 ## Dataset
 
