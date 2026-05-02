@@ -308,6 +308,7 @@ top_snippet = snippets[top_idx]
 ---
 
 ### Page Content Retrieval
+<img width="1800" height="294" alt="image" src="https://github.com/user-attachments/assets/76ce2c10-fd8b-40be-b87d-c795ccc83186" />
 
 **Goal:** Go beyond the short Google snippet (~160 chars) and retrieve the full article content for deeper evidence.
 
